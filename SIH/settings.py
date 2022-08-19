@@ -54,7 +54,10 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4000',
-    "http://0.0.0.0:5000"
+    "http://0.0.0.0:5000",
+    "https://iamakkar.github.io/scanners-sih",
+    "http://localhost:3000",
+    "http://localhost"
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
