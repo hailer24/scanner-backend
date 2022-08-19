@@ -6,3 +6,4 @@ opencv_contrib_python_headless==4.5.1.48
 Pillow==9.2.0
 pylsd==0.0.2
 scipy==1.8.0
+gunicorn==20.1.0
