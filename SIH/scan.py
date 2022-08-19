@@ -252,7 +252,7 @@ def scan( image_path):
 
     ratio = image.shape[0] / RESCALED_HEIGHT
     orig = image.copy()
-    print(image.shape)
+    # print(image.shape)
     rescaled_image = imutils.resize(image, height = int(RESCALED_HEIGHT))
 
     # get the contour of the document
@@ -279,7 +279,7 @@ def scan( image_path):
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
     cv2.imwrite('out1.png', sharpen)
-    print("Proccessed " + basename)
+    # print("Proccessed " + basename)
 
     with open("out1.png", "rb") as image2string:
         converted_string = base64.b64encode(image2string.read())
@@ -303,7 +303,7 @@ from PIL import Image as im
 def create_opencv_image_from_stringio(img_stream, cv2_img_flag=0):
     img_stream.seek(0)
     img_array = np.asarray(bytearray(img_stream.read()), dtype=np.uint8)
-    print(img_array.shape)
+    # print(img_array.shape)
     ret = im.fromarray(img_array)
     return cv2.cvtColor(np.array(ret), cv2.COLOR_RGB2BGR)
 
