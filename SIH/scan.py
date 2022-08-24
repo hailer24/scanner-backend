@@ -282,24 +282,24 @@ def scan( image_path):
     cv2.imwrite('out1.png', warped)
     # print("Proccessed " + basename)
 
-    with open("out1.png", "rb") as image2string:
-        converted_string = base64.b64encode(image2string.read())
+    # with open("out1.png", "rb") as image2string:
+    #     converted_string = base64.b64encode(image2string.read())
 
-    return converted_string
+    # return converted_string
 
 
     # enable return statement if u need to get the image in return 
     # return thresh
 
-
-if __name__ == "__main__":
-    for i in range(1,9):
-        scan("test"+str(i)+".jpeg")
-        scan("test"+str(i)+".jpg")
-        scan("test"+str(i)+".JPG")    
+ 
 
 import base64
 from PIL import Image as im
+
+def encode():
+    with open("out1.png", "rb") as image2string:
+        converted_string = base64.b64encode(image2string.read())
+    return converted_string
 
 def create_opencv_image_from_stringio(img_stream, cv2_img_flag=0):
     img_stream.seek(0)
@@ -308,9 +308,12 @@ def create_opencv_image_from_stringio(img_stream, cv2_img_flag=0):
     ret = im.fromarray(img_array)
     return cv2.cvtColor(np.array(ret), cv2.COLOR_RGB2BGR)
 
-def decode(img_buf):
+def decode(img_buf, filter):
     with open("pre_processed.png", "wb") as fh:
         fh.write(base64.b64decode(img_buf))
     fh.close()
     
-    return scan("pre_processed.png")
+    scan("pre_processed.png")
+    
+
+    return encode()
