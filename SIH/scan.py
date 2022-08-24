@@ -296,6 +296,12 @@ def scan( image_path):
 import base64
 from PIL import Image as im
 
+def add_filter(img_path):
+    #Deepan code here
+    
+    return img_path
+
+
 def encode():
     with open("out1.png", "rb") as image2string:
         converted_string = base64.b64encode(image2string.read())
@@ -314,6 +320,8 @@ def decode(img_buf, filter):
     fh.close()
     
     scan("pre_processed.png")
-    
+
+    if filter:
+        add_filter("out1.png")
 
     return encode()

@@ -12,10 +12,19 @@ def index(request):
     if(request.method == "POST"):
         req_body = request.body.decode('utf-8')
         body = json.loads(req_body)
-        ret = scan.decode(body["img"],body["filter"])
+        ret = scan.decode(body["img"],False)
         print("POST request processed")
         return HttpResponse(ret)
         # return HttpResponse("req rec")
     if(request.method == "GET"):
         # print(request.body)
         return HttpResponse("GET is not a valid method")
+
+@csrf_exempt
+def filtered(request):
+    if(request.method == "POST"):
+        req_body = request.body.decode('utf-8')
+        body = json.loads(req_body)
+        ret = scan.decode(body["img"],True)
+        print("POST request processed")
+        return HttpResponse(ret)
