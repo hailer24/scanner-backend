@@ -169,7 +169,7 @@ def get_contour( rescaled_image):
 
     # convert the image to grayscale and blur it slightly
     gray = cv2.cvtColor(rescaled_image, cv2.COLOR_BGR2GRAY)
-    gray = cv2.GaussianBlur(gray, (5,5), 0)
+    gray = cv2.GaussianBlur(gray, (3,3), 0)
 
     # dilate helps to remove potential holes between edge segments
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT,(MORPH,MORPH))
@@ -262,11 +262,12 @@ def scan( image_path):
     warped = transform.four_point_transform(orig, screenCnt * ratio)
 
     # convert the warped image to grayscale
-    gray = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
+    # gray = cv2.cvtColor(warped, cv2.COLOR_BGR2GRAY)
+    # gray = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 29, 3)
 
     # sharpen image
-    sharpen = cv2.GaussianBlur(gray, (0,0), 3)
-    sharpen = cv2.addWeighted(gray, 1.5, sharpen, -0.5, 0)
+    # sharpen = cv2.GaussianBlur(gray, (0,0), 3)
+    # sharpen = cv2.addWeighted(gray, 1.5, sharpen, -0.5, 0)
 
     # apply adaptive threshold to get black and white effect
     # thresh = cv2.adaptiveThreshold(sharpen, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, 15)
@@ -278,7 +279,7 @@ def scan( image_path):
     # # press esc or q to quit
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
-    cv2.imwrite('out1.png', sharpen)
+    cv2.imwrite('out1.png', warped)
     # print("Proccessed " + basename)
 
     with open("out1.png", "rb") as image2string:
