@@ -308,7 +308,7 @@ def add_filter(img_path):
     sharpen = cv2.GaussianBlur(gray, (0,0), 3)
     sharpen = cv2.addWeighted(gray, 1.5, sharpen, -0.5, 0)
 
-    thres = cv2.adaptiveThreshold(sharpen, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 17, 15)
+    thres = cv2.adaptiveThreshold(sharpen, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 9, 15)
 
     cv2.imwrite('out1.png', thres)
     
@@ -327,11 +327,16 @@ def create_opencv_image_from_stringio(img_stream, cv2_img_flag=0):
     ret = im.fromarray(img_array)
     return cv2.cvtColor(np.array(ret), cv2.COLOR_RGB2BGR)
 
+def fft(img_path,thres = 0):
+    return False
 def decode(img_buf, filter):
     with open("pre_processed.png", "wb") as fh:
         fh.write(base64.b64decode(img_buf))
     fh.close()
     
+    if fft("pre_processed.png"):
+        return "blurred"
+
     scan("pre_processed.png")
 
     if filter == 0:

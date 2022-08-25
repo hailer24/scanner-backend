@@ -13,11 +13,14 @@ def index(request):
         req_body = request.body.decode('utf-8')
         body = json.loads(req_body)
         ret = scan.decode(body["img"],99)
+        if ret == "blurred":
+            print ("The image is blurry")
+            return HttpResponse(ret)
         print("POST request processed")
         return HttpResponse(ret)
-        # return HttpResponse("req rec")
+        
     if(request.method == "GET"):
-        # print(request.body)
+        
         return HttpResponse("GET is not a valid method")
 
 @csrf_exempt
@@ -26,5 +29,8 @@ def filtered(request):
         req_body = request.body.decode('utf-8')
         body = json.loads(req_body)
         ret = scan.decode(body["img"],body["filter"])
+        if ret == "blurred":
+            print ("The image is blurry")
+            return HttpResponse(ret)
         print("POST request processed")
         return HttpResponse(ret)
