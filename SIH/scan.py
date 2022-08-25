@@ -328,6 +328,12 @@ def create_opencv_image_from_stringio(img_stream, cv2_img_flag=0):
     return cv2.cvtColor(np.array(ret), cv2.COLOR_RGB2BGR)
 
 def fft(img_path,thres = 0):
+    img = cv2.imread(img_path)
+    laplcian_var = cv2.Laplacian(img,cv2.CV_64F).var()
+    print(laplcian_var)
+    if laplcian_var<400:
+        return True
+    
     return False
 def decode(img_buf, filter):
     with open("pre_processed.png", "wb") as fh:

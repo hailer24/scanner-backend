@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["0.0.0.0",
                 "localhost",
                 "127.0.0.1",
+                # "3da2-103-167-127-148.in.ngrok.io",
                 "scanner-backend.herokuapp.com"
                 ]
 
@@ -59,7 +60,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4000',
     "http://0.0.0.0:5000",
-    "https://iamakkar.github.io/scanners-sih",
+    #"https://iamakkar.github.io/scanners-sih",
     "http://localhost:3000",
     "http://localhost"
 ]
