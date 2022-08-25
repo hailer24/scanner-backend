@@ -18,7 +18,8 @@ import math
 import cv2
 from io import BytesIO
 from pylsd.lsd import lsd
-
+from . import white_board
+from . import grayscale_filter
 import argparse
 import os
 
@@ -296,6 +297,10 @@ def scan( image_path):
 import base64
 from PIL import Image as im
 
+
+
+    
+#thresholding filer 
 def add_filter(img_path):
     image = cv2.imread(img_path)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -330,6 +335,6 @@ def decode(img_buf, filter):
     scan("pre_processed.png")
 
     if filter:
-        add_filter("out1.png")
+        white_board.white_board_filter("out1.png",4,5)
 
     return encode()
