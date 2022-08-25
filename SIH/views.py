@@ -12,7 +12,7 @@ def index(request):
     if(request.method == "POST"):
         req_body = request.body.decode('utf-8')
         body = json.loads(req_body)
-        ret = scan.decode(body["img"],False)
+        ret = scan.decode(body["img"],99)
         print("POST request processed")
         return HttpResponse(ret)
         # return HttpResponse("req rec")
@@ -25,6 +25,6 @@ def filtered(request):
     if(request.method == "POST"):
         req_body = request.body.decode('utf-8')
         body = json.loads(req_body)
-        ret = scan.decode(body["img"],True)
+        ret = scan.decode(body["img"],body["filter"])
         print("POST request processed")
         return HttpResponse(ret)

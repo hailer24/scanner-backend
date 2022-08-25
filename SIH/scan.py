@@ -334,7 +334,12 @@ def decode(img_buf, filter):
     
     scan("pre_processed.png")
 
-    if filter:
+    if filter == 0:
         white_board.white_board_filter("out1.png",4,5)
+    elif filter == 1:
+        add_filter("out1.png")
+    elif filter == 2:
+        grayscale_filter.grayscaling_filter("out1.png")
+        
 
     return encode()
