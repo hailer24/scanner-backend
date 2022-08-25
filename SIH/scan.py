@@ -305,7 +305,7 @@ def add_filter(img_path):
     image = cv2.imread(img_path)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     # gray = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 29, 3)
-    sharpen = cv2.GaussianBlur(gray, (0,0), 3)
+    sharpen = cv2.GaussianBlur(gray, (3,3), 3)
     sharpen = cv2.addWeighted(gray, 1.5, sharpen, -0.5, 0)
 
     thres = cv2.adaptiveThreshold(sharpen, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 9, 15)
